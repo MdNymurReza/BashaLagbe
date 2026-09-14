@@ -1,6 +1,6 @@
-# UIUNest - Project Overview
+# BashaLagbe - Project Overview
 
-**UIUNest** is a comprehensive housing and community platform specifically designed for students and individuals residing around the UIU (United International University) campus. It aims to solve the common challenges of finding suitable accommodation, compatible flatmates, managing shared expenses, and trading essential items within the campus community.
+**BashaLagbe** is a comprehensive housing and community platform specifically designed for students and individuals residing around the UIU (United International University) campus. It aims to solve the common challenges of finding suitable accommodation, compatible flatmates, managing shared expenses, and trading essential items within the campus community.
 
 ## 🚀 Tech Stack
 
@@ -31,7 +31,7 @@
 - **Detailed Preferences:** Posts include budget, preferred location, lifestyle preferences, and direct contact buttons.
 - **Filtering:** Browse seeking posts by Property Type, Zone, and Preferred Gender.
 
-### 4. UIUNest Exchange (Marketplace)
+### 4. BashaLagbe Exchange (Marketplace)
 - **Campus Marketplace:** Buy and sell pre-owned essential items (e.g., fans, tables, chairs, electronics) within the campus zone.
 - **Interactive Offer System:** Buyers can make price offers. Sellers can choose to **Accept**, **Reject**, or provide a **Counter Offer**.
 - **Item Details:** Includes photos, descriptions, and seller profiles.
