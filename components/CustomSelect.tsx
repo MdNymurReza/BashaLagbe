@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface CustomSelectProps {
-  name: string;
+  name?: string;
   value: string;
   onChange: (value: string) => void;
   options: { value: string; label: string }[];

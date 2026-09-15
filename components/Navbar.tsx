@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 // import type { Profile } from '@/types';
-import { Home, Building2, ShoppingBag, Search, UserCircle, LayoutDashboard, User, Heart, Receipt, LogOut, Menu, MessageCircle, ArrowLeft } from 'lucide-react';
+import { Home, Building2, ShoppingBag, Search, UserCircle, LayoutDashboard, User, Heart, Receipt, LogOut, Menu, MessageCircle, ArrowLeft, PlusCircle } from 'lucide-react';
 // import NotificationBell from './NotificationBell';
 // import MessageIcon from './MessageIcon';
 
@@ -111,7 +111,7 @@ export default function Navbar() {
 
   const getLinkClass = (path: string) => pathname === path || (path !== '/' && pathname.startsWith(path)) ? 'active' : '';
 
-  const initials = user?.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'US';
+  const initials = user?.name ? user.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2) : 'US';
 
   const currentRole = user?.role;
 
@@ -120,6 +120,7 @@ export default function Navbar() {
     { href: '/listings', label: 'Listings', icon: <Building2 size={18} className="nav-icon" /> },
     { href: '/exchange', label: 'Market', icon: <ShoppingBag size={18} className="nav-icon" /> },
     ...(currentRole !== 'landlord' ? [{ href: '/seeking', label: 'Seeking', icon: <Search size={18} className="nav-icon" /> }] : []),
+    ...(currentRole === 'landlord' ? [{ href: '/listings/create', label: 'Add Listing', icon: <PlusCircle size={18} className="nav-icon" /> }] : []),
   ];
 
   const isMessagesPage = pathname.startsWith('/messages');
