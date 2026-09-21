@@ -1,6 +1,5 @@
-import { Suspense } from 'react';
 import { createClient } from '@/lib/supabase/server';
-import SeekingBoard from './seeking-roommate/components/SeekingBoard';
+import SeekingBoard from '@/app/seeking-roommate/components/SeekingBoard';
 
 export const metadata = {
   title: 'Seeking Flatmates - BashaLagbe',
@@ -22,8 +21,8 @@ export default async function SeekingPage() {
   // Fetch zones for filter
   const { data: zones } = await supabase.from('zones').select('*').order('zone_name');
 
-  // Fetch seeking posts
-  const { data: posts } = await supabase
+  // Fetch seeking posts with user info and zone name
+  const { data: postsRaw } = await supabase
     .from('seeking_posts')
     .select(`
       *,
@@ -32,13 +31,20 @@ export default async function SeekingPage() {
     `)
     .order('created_at', { ascending: false });
 
+  // Flatten joined fields
+  const posts = (postsRaw || []).map((p: any) => ({
+    ...p,
+    user_name: p.user?.name,
+    user_gender: p.user?.gender,
+    zone: p.zone?.zone_name,
+  }));
+
   return (
-    <SeekingBoard 
-      posts={posts || []} 
-      zones={zones || []} 
-      isLoggedIn={isLoggedIn} 
-      isAdmin={isAdmin} 
+    <SeekingBoard
+      posts={posts}
+      zones={zones || []}
+      isLoggedIn={isLoggedIn}
+      isAdmin={isAdmin}
     />
   );
 }
-
